@@ -11,7 +11,7 @@ Hand off one task without handing over your whole account.
 
 ## The Problem
 
-Small online sellers, many of them women running solo or small stores, often need help with a single job, like marking five orders as dispatched by 6 PM. Today the only option is to share their full login. That gives the helper access to refunds, payments and customer data they never needed, and the access stays open long after the task is done.
+Small online sellers, many of them women running solo or small stores, often need help with a single job, like marking five orders as dispatched by 6 PM. Sharing a full login is a common shortcut; broad staff roles can also expose more access than the individual task needs. That gives the helper access to refunds, payments and customer data they never needed, and the access stays open long after the task is done.
 
 ## The Solution
 
@@ -48,14 +48,41 @@ Taskey lets an owner delegate **one task** with **only the permissions that task
 
 ## Run Locally
 
+Use **Node.js 20.19+ or 22.12+**, as required by the committed Vite dependency.
+
 ```bash
 git clone https://github.com/aarna02gupta-create/taskkey-herspark-ideathon.git
 cd taskkey-herspark-ideathon
-npm install
+npm ci
 npm run dev
 ```
 
 Then open the local URL shown in the terminal (usually `http://localhost:5173`).
+
+## Demo walkthrough
+
+1. Open the guided task creation flow and use the pre-filled dispatch task.
+2. Inspect the allowed/blocked permission comparison and select an access duration.
+3. Open the split-screen sandbox and dispatch an assigned order.
+4. Attempt a refund or customer export to see a simulated denial and audit entry.
+5. Use the owner revoke action to terminate the simulated helper session.
+6. Inspect the developer payload to view the example policy JSON.
+
+## Build and code checks
+
+```bash
+npm run build
+npm run lint
+npm run preview
+```
+
+`preview` serves the production build locally after `build` completes.
+
+## What the prototype demonstrates
+
+The interface uses React state and mock records to demonstrate delegation. The policy JSON is a static example, and text such as "cryptographically signed" or "API gateway" in the UI illustrates the proposed backend design. This repository does not implement cryptographic signing, a gateway, live AI scope generation, or server-side access control.
+
+Exposure percentages and risk labels are illustrative demo values, not measured reductions in security risk. Audit events and simulated session changes are not durable server-side records.
 
 ## Project Status and Roadmap
 
