@@ -59,6 +59,16 @@ npm run dev
 
 Then open the local URL shown in the terminal (usually `http://localhost:5173`).
 
+## Source map
+
+- `src/App.jsx`: application navigation and shared state
+- `src/components/screens/`: owner, helper, delegation, team, and audit screens
+- `src/components/`: task creation, guided tour, and sandbox components
+- `src/data/mockData.js`: demo records
+- `src/index.css` and `src/styles/theme.css`: styles and theme
+
+Use the committed lockfile with `npm ci`. Run lint and a production build before pushing changes; `npm run preview` lets you check the built app. No API credentials or database are needed for this prototype.
+
 ## Demo walkthrough
 
 1. Open the guided task creation flow and use the pre-filled dispatch task.
