@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Award, CheckCircle2, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
+import { X, Award } from 'lucide-react';
 
 export const CriteriaModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;

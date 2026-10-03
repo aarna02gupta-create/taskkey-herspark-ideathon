@@ -1,30 +1,16 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  FileText, 
-  Download, 
-  Filter, 
-  Search, 
-  CheckCircle2, 
-  XCircle, 
-  Lock, 
-  Clock, 
-  KeyRound, 
-  Ban, 
-  ShieldCheck, 
-  ShieldAlert, 
-  Shield, 
-  ArrowRight, 
-  X, 
-  User, 
-  ChevronRight, 
-  Sparkles, 
-  Activity, 
-  SlidersHorizontal,
-  FileCheck,
-  Calendar,
-  Layers,
-  Database,
-  AlertTriangle
+import {
+  Download,
+  Search,
+  CheckCircle2,
+  Clock,
+  KeyRound,
+  Ban,
+  ShieldCheck,
+  ShieldAlert,
+  X,
+  ChevronRight,
+  Activity
 } from 'lucide-react';
 import { UserAvatar } from '../Illustrations';
 

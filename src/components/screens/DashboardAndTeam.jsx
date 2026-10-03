@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import { 
-  ShieldCheck, 
+import {
+  ShieldCheck,
   Shield,
-  Sparkles, 
-  Clock, 
-  CheckCircle2, 
-  XCircle, 
-  AlertTriangle, 
-  Lock, 
-  Plus, 
-  Search, 
-  Users, 
+  Clock,
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
+  Lock,
+  Plus,
+  Search,
+  Users,
   Radio,
   TrendingUp,
   Ban,
   Bot,
-  Check, 
-  RefreshCw, 
-  KeyRound, 
+  Check,
+  RefreshCw,
+  KeyRound,
   Activity,
   ShieldAlert
 } from 'lucide-react';
@@ -27,11 +26,7 @@ import { TaskKeyMotionVisual } from '../TaskKeyMotionVisual';
 import { calculateRiskAssessment } from '../../data/mockData';
 
 // Screen 1: Enhanced TaskKey Command Center (First Page)
-export const DashboardScreen = ({ onAssignClick, onViewTeamClick, onAuditClick, onAddAuditEvent }) => {
-  // Live State for Hero Intelligence Flow Interaction
-  const [aiFlowState, setAiFlowState] = useState('idle'); // 'idle' | 'analyzing' | 'scoped'
-  const [activeTaskPrompt, setActiveTaskPrompt] = useState("Process today's 5 orders");
-  
+export const DashboardScreen = ({ onAddAuditEvent }) => {
   // Live State for Interactive Simulation
   const [simulatedOrderStatus, setSimulatedOrderStatus] = useState('Pending'); // 'Pending' | 'Processed'
   const [simulationAlert, setSimulationAlert] = useState(null); // null | { type: 'allowed' | 'blocked', title: string, desc: string }
@@ -75,38 +70,6 @@ export const DashboardScreen = ({ onAssignClick, onViewTeamClick, onAuditClick, 
       statusType: 'granted'
     }
   ]);
-
-  // Handle Hero Flow Interactive Click
-  const handleTriggerHeroFlow = () => {
-    setAiFlowState('analyzing');
-    setTimeout(() => {
-      setAiFlowState('scoped');
-      try {
-        confetti({
-          particleCount: 35,
-          spread: 50,
-          origin: { y: 0.5, x: 0.75 },
-          colors: ['#D94F82', '#E879A2', '#F6C5D6']
-        });
-      } catch {
-        // fallback
-      }
-
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const newEntry = {
-        id: `act-${Date.now()}`,
-        time: timeStr,
-        user: 'Riya',
-        role: 'Business Owner',
-        action: 'scoped 5 orders access token for Priya',
-        scope: 'policy:scoped_issue',
-        status: 'ACCESS GRANTED',
-        statusType: 'granted'
-      };
-      setActivityFeed(prev => [newEntry, ...prev]);
-    }, 900);
-  };
 
   // Handle Allowed Action: Process Order
   const handleProcessOrder = () => {

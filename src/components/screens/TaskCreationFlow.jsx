@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  Bot, 
-  CheckCircle2, 
-  XCircle, 
-  Clock, 
-  ArrowRight, 
-  ShieldCheck, 
-  AlertCircle, 
-  ChevronDown, 
-  ChevronUp, 
-  Check, 
-  Layers,
-  FileCheck2,
+import {
+  Sparkles,
+  Bot,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  ArrowRight,
+  ShieldCheck,
+  ChevronDown,
+  ChevronUp,
+  Check,
   Calendar,
   Sparkle
 } from 'lucide-react';
@@ -110,7 +107,7 @@ export const AssignStep1Describe = ({ helperName = "Riya Sharma", onNext, initia
 };
 
 // Screen 5: Step 2 - AI Suggests Permissions
-export const AssignStep2AISuggest = ({ onNext, onBack, onInspectDiff }) => {
+export const AssignStep2AISuggest = ({ onNext, onBack}) => {
   const [showWhy, setShowWhy] = useState(false);
 
   return (

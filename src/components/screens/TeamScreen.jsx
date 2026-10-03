@@ -1,30 +1,19 @@
-import React, { useState, useMemo } from 'react';
-import { 
-  Users, 
-  UserPlus, 
-  KeyRound, 
-  ShieldCheck, 
-  ShieldAlert, 
-  Clock, 
-  CheckCircle2, 
-  XCircle, 
-  Lock, 
-  ChevronRight, 
-  Plus, 
-  X, 
-  Search, 
-  Ban, 
-  Activity, 
-  Calendar, 
-  Mail, 
-  Sparkles, 
-  Shield, 
-  Check, 
-  SlidersHorizontal,
-  FileText,
-  UserCheck,
-  UserX,
-  AlertTriangle
+import React, { useState, useMemo, useCallback } from 'react';
+import {
+  Users,
+  UserPlus,
+  KeyRound,
+  ShieldCheck,
+  Clock,
+  CheckCircle2,
+  ChevronRight,
+  Plus,
+  X,
+  Search,
+  Ban,
+  Mail,
+  Shield,
+  Check
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { UserAvatar } from '../Illustrations';
@@ -122,10 +111,10 @@ export const TeamScreen = ({
   };
 
   // Find active delegation for a given member name from the shared delegations list
-  const getMemberDelegation = (memberName) => {
+  const getMemberDelegation = useCallback((memberName) => {
     if (!delegations) return null;
     return delegations.find(d => d.assignedTo === memberName && (d.status === 'active' || d.status === 'pending' || d.status === 'expired' || d.status === 'revoked'));
-  };
+  }, [delegations]);
 
   // Calculate high-level team metrics
   const stats = useMemo(() => {
@@ -152,7 +141,7 @@ export const TeamScreen = ({
       activeDelegations: activeDelegationsCount || 3,
       pending: pendingAccess || 1
     };
-  }, [currentMembers, delegations]);
+  }, [currentMembers, getMemberDelegation]);
 
   // Revoke delegation for a member
   const handleRevokeForMember = (delId, memberName) => {
@@ -232,7 +221,7 @@ export const TeamScreen = ({
 
       return true;
     });
-  }, [currentMembers, delegations, statusFilter, searchQuery]);
+  }, [currentMembers, getMemberDelegation, statusFilter, searchQuery]);
 
   return (
     <div className="space-y-8 animate-fade-in pb-16">

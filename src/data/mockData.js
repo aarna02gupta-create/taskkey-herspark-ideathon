@@ -138,7 +138,7 @@ export const developerPayload = {
   }
 };
 
-export const calculateRiskAssessment = (taskPrompt = '', allowedPermissions = [], restrictedPermissions = []) => {
+export const calculateRiskAssessment = (taskPrompt = '', allowedPermissions = []) => {
   const p = taskPrompt.toLowerCase();
   
   if (p.includes('refund') || p.includes('payout') || p.includes('bank') || p.includes('payment') || p.includes('money')) {

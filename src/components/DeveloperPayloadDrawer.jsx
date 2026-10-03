@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code, Copy, Check, X, Shield, Terminal } from 'lucide-react';
+import { Code, Copy, Check, X, Shield } from 'lucide-react';
 import { developerPayload } from '../data/mockData';
 
 export const DeveloperPayloadDrawer = ({ isOpen, onClose }) => {

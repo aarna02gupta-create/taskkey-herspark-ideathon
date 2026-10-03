@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  X, 
-  Bot, 
-  Shield, 
-  Check, 
-  KeyRound, 
-  User, 
-  Clock, 
-  Sparkles, 
-  Layers,
-  ArrowRight,
-  Lock,
+import {
+  X,
+  Bot,
+  Shield,
+  Check,
+  KeyRound,
+  Sparkles,
   CheckCircle2,
-  AlertTriangle,
-  TrendingUp,
-  RotateCcw,
   Zap,
-  Play,
-  FileCheck,
   ShieldCheck
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -57,14 +47,16 @@ export const CreateDelegationModal = ({
     "Prepare Festive Collection marketing assets"
   ];
 
-  // Reset modal state upon open
-  useEffect(() => {
+  // Reset workflow on reopen while retaining the selected form values.
+  const [wasOpen, setWasOpen] = useState(isOpen);
+  if (wasOpen !== isOpen) {
+    setWasOpen(isOpen);
     if (isOpen) {
       setWorkflowStep('input');
       setAnalysisProgress(0);
       setCreatedSessionData(null);
     }
-  }, [isOpen]);
+  }
 
   // AI Analysis Step Timer Simulation
   useEffect(() => {
@@ -185,12 +177,12 @@ export const CreateDelegationModal = ({
   };
 
   // Final Approval & Issuance
-  const handleApproveAndIssue = () => {
+  const handleApproveAndIssue = (issuedAt, randomSuffix) => {
     const sessionTokenId = `TK-1041-${selectedHelper.slice(0, 2).toUpperCase()}`;
-    const policyId = `TK-POL-${currentScope.category.slice(0, 3).toUpperCase()}-${Math.floor(10 + Math.random() * 90)}`;
+    const policyId = `TK-POL-${currentScope.category.slice(0, 3).toUpperCase()}-${randomSuffix}`;
 
     const newDelegationObj = {
-      id: `del-${Date.now()}`,
+      id: `del-${issuedAt}`,
       title: currentScope.title,
       taskPrompt: taskPrompt,
       category: currentScope.category,
@@ -707,7 +699,7 @@ export const CreateDelegationModal = ({
               </button>
 
               <button
-                onClick={handleApproveAndIssue}
+                onClick={() => handleApproveAndIssue(Date.now(), Math.floor(10 + Math.random() * 90))}
                 className="btn-pink-primary text-xs sm:text-sm py-3 px-6 font-bold flex items-center gap-2 shadow-md hover:scale-[1.02] transition-transform"
               >
                 <Check size={16} />

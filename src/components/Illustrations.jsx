@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const UserAvatar = ({ name, role, size = 42, className = '' }) => {
+export const UserAvatar = ({ name, size = 42, className = '' }) => {
   // Deterministic soft pastel gradient colors based on name
   const getGradient = (n = '') => {
     if (n.includes('Juhi')) return ['#F8719D', '#D9466F'];

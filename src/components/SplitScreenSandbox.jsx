@@ -1,25 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  ShieldAlert, 
-  Lock, 
-  Clock, 
-  CheckCircle2, 
-  XCircle, 
-  AlertTriangle, 
-  Ban, 
-  RefreshCw, 
-  TrendingDown, 
-  Code, 
-  Check, 
-  Eye, 
-  ExternalLink,
-  Zap,
-  Sparkles,
-  Info
-} from 'lucide-react';
+import { ShieldCheck, Lock, Clock, Ban, RefreshCw, TrendingDown, Code, Check } from 'lucide-react';
 import { initialOrders, initialAuditLog } from '../data/mockData';
-import { UserAvatar, DeniedActionIllustration } from './Illustrations';
+import { UserAvatar } from './Illustrations';
 import { DeniedActionAlertModal } from './screens/HelperAndAuditScreens';
 
 export const SplitScreenSandbox = ({ onOpenPayload }) => {
@@ -27,7 +9,6 @@ export const SplitScreenSandbox = ({ onOpenPayload }) => {
   const [auditLogs, setAuditLogs] = useState(initialAuditLog);
   const [isRevoked, setIsRevoked] = useState(false);
   const [exposureMeter, setExposureMeter] = useState(82);
-  const [isPolicyActive, setIsPolicyActive] = useState(true);
   const [showDeniedModal, setShowDeniedModal] = useState(false);
   const [deniedActionName, setDeniedActionName] = useState('Refund Order #103');
   const [countdownSeconds, setCountdownSeconds] = useState(5520); // ~1h 32m
@@ -56,15 +37,14 @@ export const SplitScreenSandbox = ({ onOpenPayload }) => {
     return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  const handleDispatchOrder = (orderId) => {
+  const handleDispatchOrder = (orderId, now) => {
     if (isRevoked) return;
     setOrders(prev => prev.map(o => o.id === orderId ? { ...o, status: 'Dispatched' } : o));
     
-    // Append to live shared audit log
-    const now = new Date();
+    // Timestamp is captured by the click event, never during rendering.
     const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const newLog = {
-      id: `aud-${Date.now()}`,
+      id: `aud-${now.getTime()}`,
       time: timeStr,
       user: 'Riya Sharma',
       action: `Dispatched Order #${orderId}`,
@@ -349,7 +329,7 @@ export const SplitScreenSandbox = ({ onOpenPayload }) => {
                         </span>
                       ) : (
                         <button
-                          onClick={() => handleDispatchOrder(order.id)}
+                          onClick={() => handleDispatchOrder(order.id, new Date())}
                           className="btn-pink-primary text-[11px] py-1 px-2.5 font-bold"
                         >
                           Dispatch

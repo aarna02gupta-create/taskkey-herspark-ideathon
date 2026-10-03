@@ -1,32 +1,19 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  Plus, 
-  Search, 
-  ShieldCheck, 
-  ShieldAlert, 
-  Shield, 
-  Clock, 
-  User, 
-  CheckCircle2, 
-  XCircle, 
-  AlertTriangle, 
-  KeyRound, 
-  Ban, 
-  ArrowRight, 
-  FileText, 
-  Filter, 
-  Sparkles, 
-  Lock, 
-  Bot, 
-  ChevronRight, 
-  Check, 
-  RefreshCw, 
-  SlidersHorizontal,
+import {
+  Plus,
+  Search,
+  ShieldCheck,
+  Shield,
+  Clock,
+  CheckCircle2,
+  KeyRound,
+  Ban,
+  Filter,
+  Lock,
+  ChevronRight,
+  Check,
   X,
-  Eye,
-  Calendar,
-  Layers,
-  Unlock
+  Eye
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { UserAvatar } from '../Illustrations';
@@ -34,9 +21,7 @@ import { UserAvatar } from '../Illustrations';
 export const DelegationsScreen = ({ 
   delegations, 
   onUpdateDelegations, 
-  onOpenCreateModal,
-  onOpenPayload 
-}) => {
+  onOpenCreateModal}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'active' | 'pending' | 'expired'
   const [selectedDelegation, setSelectedDelegation] = useState(null);

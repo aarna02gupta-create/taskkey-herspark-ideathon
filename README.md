@@ -86,7 +86,7 @@ npm run lint
 npm run preview
 ```
 
-`preview` serves the production build locally after `build` completes.
+`lint` fails on warnings as well as errors, so unused code and hook issues cannot silently accumulate. `preview` serves the production build locally after `build` completes.
 
 ## What the prototype demonstrates
 

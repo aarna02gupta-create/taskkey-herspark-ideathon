@@ -1,39 +1,24 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  ShieldCheck, 
-  ShieldAlert, 
-  Shield, 
-  Lock, 
-  KeyRound, 
-  Bot, 
-  CheckCircle2, 
-  XCircle, 
-  AlertTriangle, 
-  Clock, 
-  Plus, 
-  Check, 
-  X, 
-  ArrowRight, 
-  RefreshCw, 
-  Activity, 
-  Layers, 
-  SlidersHorizontal,
-  ChevronRight,
-  TrendingUp,
-  FileCode,
-  Eye,
+import {
+  ShieldCheck,
+  ShieldAlert,
+  Shield,
+  Lock,
+  KeyRound,
+  Bot,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  Plus,
+  X,
   Ban,
-  Sparkles,
-  Zap,
-  Radio
+  Zap
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
+
 import { UserAvatar } from '../Illustrations';
 
 export const SecurityScreen = ({ 
   delegations, 
-  teamMembers, 
-  onUpdateDelegations, 
   onOpenCreatePolicyModal,
   onAddAuditEvent 
 }) => {
@@ -57,11 +42,6 @@ export const SecurityScreen = ({
   const [evaluating, setEvaluating] = useState(false);
   const [simPulse, setSimPulse] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
-
-  const showToast = (msg) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 3500);
-  };
 
   // Run Real-Time Action Test with Risk Intelligence
   const handleTestAction = (actionName, apiEndpoint, isAllowed, customReason, riskInfo) => {

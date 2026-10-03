@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  X, 
-  Play, 
-  Pause, 
-  RotateCcw, 
-  Bot, 
-  ShieldCheck, 
-  ShieldAlert, 
-  Shield, 
-  Check, 
-  KeyRound, 
-  Clock, 
-  FileText, 
-  Sparkles, 
-  Lock, 
-  CheckCircle2, 
-  ChevronRight, 
-  ChevronLeft, 
-  TrendingUp,
-  Ban,
-  UserCheck,
-  Zap
+import {
+  X,
+  Play,
+  Pause,
+  RotateCcw,
+  Bot,
+  Check,
+  KeyRound,
+  ChevronRight,
+  ChevronLeft
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { UserAvatar } from './Illustrations';
+
+const stepDurations = [3600, 3200, 3600, 3400, 3600, 3400, 3800, 3800];
 
 export const InteractiveDemoModal = ({ 
   isOpen, 
@@ -33,16 +23,18 @@ export const InteractiveDemoModal = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const stepDurations = [3600, 3200, 3600, 3400, 3600, 3400, 3800, 3800];
-
-  useEffect(() => {
+  // Reset before reopening, without a cascading effect render.
+  const [wasOpen, setWasOpen] = useState(isOpen);
+  if (wasOpen !== isOpen) {
+    setWasOpen(isOpen);
     if (!isOpen) {
       setCurrentStep(0);
       setIsPlaying(true);
-      return;
     }
+  }
 
-    if (!isPlaying) return;
+  useEffect(() => {
+    if (!isOpen || !isPlaying) return;
 
     const timer = setTimeout(() => {
       if (currentStep < 7) {

@@ -1,32 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Sparkles, 
-  Play, 
-  RotateCcw, 
-  Layers, 
-  Check, 
-  ShieldCheck, 
-  AlertTriangle 
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, AlertTriangle } from 'lucide-react';
 import { DashboardScreen, TeamScreen, EmployeeProfileScreen } from './screens/DashboardAndTeam';
-import { 
-  AssignStep1Describe, 
-  AssignStep2AISuggest, 
-  AssignStep3Duration, 
-  PermissionDiffScreen, 
-  TaskAssignedSuccessScreen 
-} from './screens/TaskCreationFlow';
-import { 
-  LiveTaskHelperScreen, 
-  DeniedActionAlertModal, 
-  AuditLogScreen, 
-  DelegationExpirySummaryScreen 
-} from './screens/HelperAndAuditScreens';
+import { AssignStep1Describe, AssignStep2AISuggest, AssignStep3Duration, PermissionDiffScreen, TaskAssignedSuccessScreen } from './screens/TaskCreationFlow';
+import { LiveTaskHelperScreen, DeniedActionAlertModal, AuditLogScreen, DelegationExpirySummaryScreen } from './screens/HelperAndAuditScreens';
 import { teamMembers, initialOrders, initialAuditLog } from '../data/mockData';
+import { DeniedActionIllustration } from './Illustrations';
 
-export const InteractiveGuidedTour = ({ currentStep, onSetStep, onOpenPayload }) => {
+export const InteractiveGuidedTour = ({ currentStep, onSetStep}) => {
   const [selectedMember, setSelectedMember] = useState(teamMembers[0]); // Riya
   const [orders, setOrders] = useState(initialOrders);
   const [auditLogs, setAuditLogs] = useState(initialAuditLog);

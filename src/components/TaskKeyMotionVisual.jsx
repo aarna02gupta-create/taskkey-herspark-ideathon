@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Bot, 
-  Shield, 
-  Check, 
-  X, 
-  AlertTriangle, 
-  Lock, 
-  KeyRound, 
-  Play, 
-  Pause, 
-  RotateCcw, 
+import {
+  Bot,
+  X,
+  Lock,
+  Play,
+  Pause,
+  RotateCcw,
   Sparkles,
-  ArrowRight,
   User,
-  Clock,
   FileText,
   ShieldCheck,
   ShieldAlert,
-  ChevronRight,
   CheckCircle2
 } from 'lucide-react';
 
-export const TaskKeyMotionVisual = ({ onTriggerDelegation }) => {
+const stepDurations = [3200, 2800, 3000, 3200, 3200, 3400, 3400, 3400];
+
+export const TaskKeyMotionVisual = () => {
   // 8 Steps as requested
   // 0: Task Card Input ("Process today's 5 orders")
   // 1: Move to TaskKey AI Core
@@ -34,7 +29,6 @@ export const TaskKeyMotionVisual = ({ onTriggerDelegation }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const stepDurations = [3200, 2800, 3000, 3200, 3200, 3400, 3400, 3400];
 
   useEffect(() => {
     if (!isPlaying) return;

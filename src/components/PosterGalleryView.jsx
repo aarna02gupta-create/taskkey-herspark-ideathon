@@ -1,41 +1,9 @@
-import React, { useState } from 'react';
-import { 
-  Maximize2, 
-  Sparkles, 
-  ExternalLink, 
-  Bot, 
-  CheckCircle2, 
-  XCircle, 
-  Clock, 
-  ShieldCheck, 
-  AlertTriangle, 
-  Lock, 
-  Calendar,
-  Check,
-  Ban,
-  ArrowRight
-} from 'lucide-react';
-import { initialOrders, teamMembers, initialAuditLog } from '../data/mockData';
-import { UserAvatar, OwnerHeroIllustration, DeniedActionIllustration } from './Illustrations';
+import React from 'react';
+import { Maximize2, Bot, Clock, AlertTriangle, Lock, Check } from 'lucide-react';
+import { teamMembers } from '../data/mockData';
+import { UserAvatar } from './Illustrations';
 
 export const PosterGalleryView = ({ onSelectScreen }) => {
-  const [activeModalScreen, setActiveModalScreen] = useState(null);
-
-  const screens = [
-    { id: 1, title: '1. Dashboard', desc: 'Owner high-level governance, KPIs & quick action', category: 'Overview' },
-    { id: 2, title: '2. My Team', desc: 'Manage trusted helpers, family & freelance assistants', category: 'Team' },
-    { id: 3, title: '3. Employee Profile', desc: 'Helper workload capacity, active scopes & audit history', category: 'Profile' },
-    { id: 4, title: '4. Assign Task (Step 1: Describe Task)', desc: 'Natural language input with pre-filled demo text', category: 'Creation' },
-    { id: 5, title: '5. AI Suggests Permissions', desc: 'Zero-trust mapping of intent to minimum required operations', category: 'AI Mapping' },
-    { id: 6, title: '6. Set Duration', desc: 'Time-scoped access boundary with auto-expiry', category: 'Duration' },
-    { id: 7, title: '7. Permission Diff', desc: 'Side-by-side Green (Allowed) vs Red (Blocked) comparison', category: 'Innovation' },
-    { id: 8, title: '8. Task Assigned Successfully', desc: 'One-click cryptographic delegation confirmation', category: 'Confirmation' },
-    { id: 9, title: '9. Live Task View (Helper Side)', desc: 'Ghost UI with locked tabs & scoped dispatch buttons', category: 'Helper UI' },
-    { id: 10, title: '10. Denied Action Alert', desc: 'High-impact instant hard block ("Not today! 💁‍♀️")', category: 'Enforcement' },
-    { id: 11, title: '11. Audit Log (Shared)', desc: 'Real-time record of all authorized and denied attempts', category: 'Audit' },
-    { id: 12, title: '12. Delegation Expiry & Summary', desc: 'Aftermath card with real demo numbers & auto-revocation', category: 'Summary' }
-  ];
-
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header Banner */}

@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
-import { 
-  Lock, 
-  CheckCircle2, 
-  XCircle, 
-  Clock, 
-  AlertTriangle, 
-  Package, 
-  FileText, 
-  CreditCard, 
-  Users, 
-  Settings, 
-  ShieldAlert, 
-  Ban, 
-  Check, 
-  Sparkles, 
+import {
+  Lock,
+  CheckCircle2,
+  Clock,
+  AlertTriangle,
+  CreditCard,
+  Settings,
+  Ban,
+  Check,
+  Sparkles,
   ArrowRight,
-  ChevronRight,
-  Filter,
   Search,
-  Download,
-  ShieldCheck,
-  RefreshCw,
-  Eye,
-  Edit3
+  ShieldCheck
 } from 'lucide-react';
 import { DeniedActionIllustration } from '../Illustrations';
 
@@ -31,11 +20,9 @@ export const LiveTaskHelperScreen = ({
   orders, 
   onDispatchOrder, 
   onAttemptDeniedAction, 
-  onCompleteAll,
   isRevoked = false 
 }) => {
   const [activeTab, setActiveTab] = useState('active');
-  const [selectedOrder, setSelectedOrder] = useState(null);
 
   const completedCount = orders.filter(o => o.status === 'Dispatched').length;
   const totalCount = orders.length;
